@@ -1,5 +1,4 @@
 import os
-import sys
 
 class CommandLineInterface:
     def __init__(self):
@@ -24,4 +23,3 @@ class CommandLineInterface:
         
 if __name__ == "__main__":
     commandLineInterface = CommandLineInterface()
-    print(sys.path)
