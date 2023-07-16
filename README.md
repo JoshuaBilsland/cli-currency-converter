@@ -8,13 +8,13 @@ I will be using the CurrencyFreaks API (https://currencyfreaks.com/) for this pr
 ## API Key
 ### 1. How to Get a Key
 To get an API key, you will need to sign up on https://currencyfreaks.com/. When you sign in, you will be presented with a dashboard that displays your API key.
-![Alt text](2-CurrencyFreaksSignUp.png)
+![2-CurrencyFreaksSignUp](https://github.com/JoshuaBilsland/cli-currency-converter/assets/85071575/e8acbaf4-3163-4078-af9e-8db83477f526)
 (Homepage)
-![Alt text](3-CurrencyFreaksDashboard.png)
+![3-CurrencyFreaksDashboard](https://github.com/JoshuaBilsland/cli-currency-converter/assets/85071575/0b7d2295-8457-49da-b1ab-7683ddf76c54)
 (Dashboard)
 ### 2. How to Set the Key
 To use this code yourself, you will need to make some additions to the code. You will need to add a new file called `.config`. This file should be on the same hierarchical level as the other files. Inside `.config`, you will need to declare the constant `API_KEY` and store your key inside of it as a string. See the previous step to find out what your API key is.
-![Alt text](4-config.png)
+<br>![4-config](https://github.com/JoshuaBilsland/cli-currency-converter/assets/85071575/123158e6-0b83-4e6b-9234-20431f511342)</br>
 ## Things I Have Learnt From This Project
 * Python environments
 * How to use config files
