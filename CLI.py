@@ -3,13 +3,12 @@ import APIConnector
 
 class CommandLineInterface:
     def __init__(self):
-        previousConversions = []
+        self.__previousConversions = []
         self.__displayProgramBanner()
+        
         os.environ['API_KEY'] = self.__getAPIKey()
-        print(os.environ['API_KEY'])
         self.__APIConnector = APIConnector.APIConnector(os.environ['API_KEY'])
-
-
+        
     # Get the API key from the .config file
     def __getAPIKey(self):
         try:
