@@ -9,7 +9,7 @@ class CommandLineInterface:
         os.environ['API_KEY'] = self.__getAPIKey()
         self.__APIConnector = APIConnector.APIConnector(os.environ['API_KEY'])
         
-        self.__displayCommands()
+        self.__commands()
         
     # Get the API key from the .config file
     def __getAPIKey(self):
@@ -36,7 +36,7 @@ class CommandLineInterface:
         # Print the bottom border
         print("=" * bannerWidth)
         
-    def __displayCommands(self):
+    def __commands(self):
         print("Commands List")
         print("-------------")
         print("1. commands - Display the list of supported commands")
