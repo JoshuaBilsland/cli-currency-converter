@@ -19,3 +19,4 @@ To use this code yourself, you will need to make some additions to the code. You
 * Python environments
 * How to use config files and environmental variables
 * .gitignore
+* How to use requirements.txt
