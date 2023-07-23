@@ -1,0 +1,40 @@
+def handleHelpCall(userInput):
+    inputAsList = userInput.split()
+    if len(inputAsList) == 2:
+        if inputAsList[0] == "help":
+            if inputAsList[1] == "commands":
+                return getCommandsHelp()
+            elif inputAsList[1] == "currencies":
+                return getCurrenciesHelp()
+            elif inputAsList[1] == "history":
+                return getHistoryHelp()
+            elif inputAsList[1] == "exit":
+                return getExitHelp()
+            else:
+                return f"'{inputAsList[1]}' is not a supported command."
+        return f"'{inputAsList[0]}' is not a supported command."
+    return f"'{userInput}' is not a supported command."
+
+def getCommandsHelp():
+    return """Displays the full list of commands supported by the program.
+This command is automatically called when first running the program.
+    """
+    
+    
+def getCurrenciesHelp():
+    return """Displays the full list of supported currencies from the CurrencyFreaks API.
+
+This list is displayed in the format of '<symbol>-<fullName> and is sorted into alphabetical order.
+Example: GBP-Pound Sterling
+
+You will need to use these symbols when using the 'convert' command to convert between currencies.
+    """
+    
+
+def getHistoryHelp():
+    return """Displays all previous conversions that have been made since the program started running.
+    """
+
+def getExitHelp():
+    return """Stops the program running.
+    """

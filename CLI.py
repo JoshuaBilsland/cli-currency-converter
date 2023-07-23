@@ -1,5 +1,6 @@
 import os
 import APIConnector
+import help
 
 class CommandLineInterface:
     def __init__(self):
@@ -52,8 +53,10 @@ class CommandLineInterface:
                 print()
             elif userInput == "exit":
                 running = False
+            elif "help" in userInput:
+                print(help.handleHelpCall(userInput))
             else:
-                print(f"'{userInput}' is not a supported command")
+                print(f"'{userInput}' is not a supported command.")
                 
 
     # Allow the user to enter a command
@@ -66,7 +69,7 @@ class CommandLineInterface:
         print("Commands List")
         print("-------------")
         print("commands - Display the list of supported commands")
-        print("currencies - View full list of available currencies")
+        print("currencies - Display full list of available currencies")
         print("history - Display previous conversions")
         print("exit - Exit the program")
         print("\nUse 'help <command>' to get more information about a specific command")        
