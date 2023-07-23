@@ -46,6 +46,8 @@ class CommandLineInterface:
             userInput = self.__getUserInput()
             if userInput == "commands":
                 self.__commands()
+            elif userInput == "currencies":
+                self.__currencies()
             elif userInput == "history":
                 print()
             elif userInput == "exit":
@@ -63,10 +65,35 @@ class CommandLineInterface:
     def __commands(self):
         print("Commands List")
         print("-------------")
-        print("1. commands - Display the list of supported commands")
-        print("2. history - Display previous conversions")
-        print("3. exit - Exit the program")
-        print("Use 'help <command>' to get more information about a specific command")        
+        print("commands - Display the list of supported commands")
+        print("currencies - View full list of available currencies")
+        print("history - Display previous conversions")
+        print("exit - Exit the program")
+        print("\nUse 'help <command>' to get more information about a specific command")        
+        
+    
+    # Display the currencies supported by CurrencyFreaks API
+    def __currencies(self):
+        try:
+            response = self.__APIConnector.getCurrencyCodesAndNames()    
+            currenciesJson = response.json()
+    
+        except response.exceptions.RequestException as e:
+            print(f"API request error: {e}")
+        
+        else:
+            self.__printCurrenciesList(currenciesJson)
+            
+    
+    # Take the JSON returned and print the data it contains to show the available currencies
+    def __printCurrenciesList(self, jsonData):
+        data = jsonData['currencySymbols']
+
+        # Print out in alphabetical order by the full name of the currency
+        for value in sorted(data.values()):
+            for symbol, fullName in data.items():
+                if fullName == value:
+                    print(f"{symbol}-{fullName}")
         
         
 if __name__ == "__main__":
