@@ -75,28 +75,23 @@ class CommandLineInterface:
         print("\nUse 'help <command>' to get more information about a specific command")        
         
     
-    # Display the currencies supported by CurrencyFreaks API
+    # Display the currencies supported by ExchangeRate-API
     def __currencies(self):
-        try:
-            response = self.__APIConnector.getCurrencyCodesAndNames()    
-            currenciesJson = response.json()
-    
-        except response.exceptions.RequestException as e:
-            print(f"API request error: {e}")
+        response = self.__APIConnector.getCurrencyCodesAndNames()    
+        currenciesJson = response.json()
         
+        if currenciesJson['result'] == "error":        
+            print(f"API request error: {currenciesJson['error-type']}")
         else:
             self.__printCurrenciesList(currenciesJson)
-            
+        
     
     # Take the JSON returned and print the data it contains to show the available currencies
     def __printCurrenciesList(self, jsonData):
-        data = jsonData['currencySymbols']
+        data = jsonData['supported_codes']
 
-        # Print out in alphabetical order by the full name of the currency
-        for value in sorted(data.values()):
-            for symbol, fullName in data.items():
-                if fullName == value:
-                    print(f"{symbol}-{fullName}")
+        for code, name in data:
+            print(f"{code}-{name}")
         
         
 if __name__ == "__main__":

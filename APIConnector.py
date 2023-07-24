@@ -6,4 +6,4 @@ class APIConnector:
         
     
     def getCurrencyCodesAndNames(self):
-        return requests.get('https://api.currencyfreaks.com/v2.0/currency-symbols')
+        return requests.get(f'https://v6.exchangerate-api.com/v6/{self.__APIKey}/codes')

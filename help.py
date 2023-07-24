@@ -17,17 +17,18 @@ def handleHelpCall(userInput):
 
 def getCommandsHelp():
     return """Displays the full list of commands supported by the program.
+
 This command is automatically called when first running the program.
     """
     
     
 def getCurrenciesHelp():
-    return """Displays the full list of supported currencies from the CurrencyFreaks API.
+    return """Displays the full list of supported currencies from 'ExchangeRate-API' (https://www.exchangerate-api.com/).
 
-This list is displayed in the format of '<symbol>-<fullName> and is sorted into alphabetical order.
+This list is displayed in the format of '<code>-<fullName> and is sorted into alphabetical order.
 Example: GBP-Pound Sterling
 
-You will need to use these symbols when using the 'convert' command to convert between currencies.
+You will need to use these codes when using the 'convert' command to convert between currencies.
     """
     
 
