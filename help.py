@@ -6,6 +6,8 @@ def handleHelpCall(userInput):
                 return getCommandsHelp()
             elif inputAsList[1] == "currencies":
                 return getCurrenciesHelp()
+            elif inputAsList[1] == "convert":
+                return getConvertHelp()
             elif inputAsList[1] == "history":
                 return getHistoryHelp()
             elif inputAsList[1] == "exit":
@@ -14,6 +16,7 @@ def handleHelpCall(userInput):
                 return f"'{inputAsList[1]}' is not a supported command."
         return f"'{inputAsList[0]}' is not a supported command."
     return f"'{userInput}' is not a supported command."
+
 
 def getCommandsHelp():
     return """Displays the full list of commands supported by the program.
@@ -32,9 +35,21 @@ You will need to use these codes when using the 'convert' command to convert bet
     """
     
 
+def getConvertHelp():
+    return """Convert an amount of money frome one currency to another. 
+
+Uses the format 'convert <fromCurrency> <toCurrency> <amount>'.
+    
+The 'fromCurrency' and 'toCurrency' should be given as the code for that currency.
+    
+Example: convert GBP USD 500
+    """
+
+
 def getHistoryHelp():
     return """Displays all previous conversions that have been made since the program started running.
     """
+
 
 def getExitHelp():
     return """Stops the program running.

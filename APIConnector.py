@@ -7,3 +7,7 @@ class APIConnector:
     
     def getCurrencyCodesAndNames(self):
         return requests.get(f'https://v6.exchangerate-api.com/v6/{self.__APIKey}/codes')
+    
+    
+    def makeConversion(self, fromCurrency, toCurrency, amount):
+        return requests.get(f"https://v6.exchangerate-api.com/v6/{self.__APIKey}/pair/{fromCurrency}/{toCurrency}/{amount}")

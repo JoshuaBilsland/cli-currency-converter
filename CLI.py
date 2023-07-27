@@ -45,16 +45,18 @@ class CommandLineInterface:
         running = True
         while running:
             userInput = self.__getUserInput()
-            if userInput == "commands":
+            if "help" in userInput:
+                print(help.handleHelpCall(userInput))
+            elif userInput == "commands":
                 self.__commands()
             elif userInput == "currencies":
                 self.__currencies()
+            elif "convert" in userInput:
+                print(self.__convert(userInput))
             elif userInput == "history":
                 print()
             elif userInput == "exit":
                 running = False
-            elif "help" in userInput:
-                print(help.handleHelpCall(userInput))
             else:
                 print(f"'{userInput}' is not a supported command.")
                 
@@ -70,6 +72,7 @@ class CommandLineInterface:
         print("-------------")
         print("commands - Display the list of supported commands")
         print("currencies - Display full list of available currencies")
+        print("convert - Convert an amount from one currency to another")
         print("history - Display previous conversions")
         print("exit - Exit the program")
         print("\nUse 'help <command>' to get more information about a specific command")        
@@ -93,6 +96,23 @@ class CommandLineInterface:
         for code, name in data:
             print(f"{code}-{name}")
         
+        
+    def __convert(self, userInput):
+        inputAsList = userInput.split()
+        if len(inputAsList) == 4 and inputAsList[0] == "convert":
+            response = self.__APIConnector.makeConversion(inputAsList[1], inputAsList[2], inputAsList[3])
+            jsonData = response.json()
+            
+            if jsonData['result'] == "error":
+                return(f"API request error: {jsonData['error-type']}")
+            else:
+                stringToReturn = ""
+                for key, value in jsonData.items():
+                    stringToReturn += str(f"{key}: {value}\n")
+                return stringToReturn
+        else:
+            return f"'{inputAsList[0]}' is not a supported command."    
+
         
 if __name__ == "__main__":
     commandLineInterface = CommandLineInterface()
