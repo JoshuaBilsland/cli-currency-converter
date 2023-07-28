@@ -52,9 +52,11 @@ class CommandLineInterface:
             elif userInput == "currencies":
                 self.__currencies()
             elif "convert" in userInput:
-                print(self.__convert(userInput))
+                convertOutput = self.__convert(userInput)
+                print(convertOutput)
+                self.__previousConversions.append(convertOutput)
             elif userInput == "history":
-                print()
+                self.__history()
             elif userInput == "exit":
                 running = False
             else:
@@ -113,6 +115,10 @@ class CommandLineInterface:
         else:
             return f"'{inputAsList[0]}' is not a supported command."    
 
+    def __history(self):
+        for conversionNum in range(len(self.__previousConversions)):
+            print(f"--- Conversion {conversionNum+1} ---")
+            print(self.__previousConversions[conversionNum])
         
 if __name__ == "__main__":
     commandLineInterface = CommandLineInterface()
